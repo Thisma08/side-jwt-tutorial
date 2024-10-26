@@ -23,15 +23,15 @@ public class UserService : IUserService
 
     public string Login(User user)
     {
-        var LoginUser = _users.SingleOrDefault(x => x.Username == user.Username && x.Password == user.Password);
+        var loginUser = _users.SingleOrDefault(x => x.Username == user.Username && x.Password == user.Password);
 
-        if(LoginUser == null)
+        if(loginUser == null)
         {
             return string.Empty;
         }
 
         var tokenHandler = new JwtSecurityTokenHandler();
-        var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
+        var key = Encoding.ASCII.GetBytes("718bee0add9205c57875e1b0ace10411");
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(new Claim[]
